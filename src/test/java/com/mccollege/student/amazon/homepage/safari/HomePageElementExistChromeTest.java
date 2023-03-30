@@ -9,8 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
@@ -27,10 +27,15 @@ public class HomePageElementExistChromeTest {
 
     @BeforeEach
     public void setupChromeDriver(){
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--remote-allow-origins=*");
+
         //create webdriver
         WebDriverManager.chromedriver().setup();
-        this.myWebDriver = new ChromeDriver();
-        
+        this.myWebDriver = new ChromeDriver(chromeOptions);
+    
     }
 
     @AfterEach
