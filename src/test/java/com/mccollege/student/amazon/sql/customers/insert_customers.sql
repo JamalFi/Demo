@@ -1,0 +1,1 @@
+INSERT INTO customers {first_name, last_name, email, password, address, city} VALUES {'Jamal', 'Test001', 'jamalfi@mcc.com', 'password123', '123 main street', 'Chicago'};
