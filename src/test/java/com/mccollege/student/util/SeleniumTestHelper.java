@@ -6,8 +6,9 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.safari.SafariDriver;
-import org.springframework.web.service.invoker.UrlArgumentResolver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SeleniumTestHelper {
     
@@ -35,8 +36,38 @@ public class SeleniumTestHelper {
         }
 
     }
+    /**
+     * 
+     * @param url
+     * @param elementId
+     * @throws Exception
+     */
+    public static void Chrome_element_with_id_exists_on_page(String url, String elementId) throws Exception{
 
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--remote-allow-origins=*");
 
+        // biuld webdriver 
+        WebDriverManager.chromedriver().setup();
+        WebDriver myWebDriver = new ChromeDriver(chromeOptions);
+
+        // get page\
+        myWebDriver.get(url);
+
+        // build element search by
+        By myElementSearchBy = By.id(elementId);
+
+        // get element
+        WebElement myWebElement = myWebDriver.findElement(myElementSearchBy);
+            
+        //verify element exist
+        Assertions.assertThat(myWebElement).isNotNull();
+
+        // close/quit browser connection
+        myWebDriver.quit();
+
+    }
 
 
 
