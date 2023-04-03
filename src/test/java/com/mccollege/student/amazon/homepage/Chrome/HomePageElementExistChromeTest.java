@@ -51,16 +51,37 @@ public class HomePageElementExistChromeTest {
         final List<By> myElementSearchBys = new ArrayList<By>();
         myElementSearchBys.add(By.id("navbar"));
 
-
-
-        //verify element exisit 
+        //verify element exists 
         SeleniumTestHelper.webdriver_element_exists(this.myWebDriver, AmazonHelper.PAGE_URL_HOME, myElementSearchBys);
 
     }
 
+    @Test
+    public void Chrome_amazon_homepage_navbar_search_exist() throws Exception{
 
+    // build list of element queries
+    final List<By> myElementSearchBys = new ArrayList<By>();
+    myElementSearchBys.add(By.id("twotabsearchtextbox"));
 
-    
+    //verify element exists 
+    SeleniumTestHelper.webdriver_element_exists(this.myWebDriver, AmazonHelper.PAGE_URL_HOME, myElementSearchBys);
+    }
+
+    @Test
+    public void Chrome_amazon_homepage_main_navbar_element_exist() throws Exception{
+
+    // build list of element queries
+    final List<By> myElementSearchBys = new ArrayList<By>();
+    myElementSearchBys.add(By.id("navbar"));
+    myElementSearchBys.add(By.id("twotabsearchtextbox"));
+    myElementSearchBys.add(By.id("icp-nav-flyout"));
+    myElementSearchBys.add(By.id("nav-link-accountList"));
+    myElementSearchBys.add(By.id("nav-orders"));
+    myElementSearchBys.add(By.id("nav-cart"));
+
+    //verify element exists 
+    SeleniumTestHelper.webdriver_element_exists(this.myWebDriver, AmazonHelper.PAGE_URL_HOME, myElementSearchBys);
+    }
   
    
 
